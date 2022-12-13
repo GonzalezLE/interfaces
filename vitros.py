@@ -152,20 +152,16 @@ if __name__ == '__main__':
     
     
     
-    obj = Parse(cadena=STRING_1,posicion_nim=1,udn='001')
+    obj = Parse(cadena=STRING_1,posicion_nim=1,udn='1')
     dd = obj.separa_cadena('vitros')
     # x = mycol.insert_one(dd)
-    print(json.dumps(dd, sort_keys=False, indent=4))
+    # print(json.dumps(dd, sort_keys=False, indent=4))
     
     
-    print("""
-          ***************************************************************************
-          """)
-    
-    obj = Parse(cadena=STRING_2,posicion_nim=1,udn='001')
+    obj = Parse(cadena=STRING_2,posicion_nim=1,udn='1')
     dd = obj.separa_cadena('vitros')
     # x = mycol.insert_one(dd)
-    print(json.dumps(dd, sort_keys=False, indent=4))
+    #     print(json.dumps(dd, sort_keys=False, indent=4))
     
     
     

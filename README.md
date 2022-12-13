@@ -73,5 +73,3 @@ if __name__ == '__main__':
   # Regresa el json procesado
   obj.Parse()
 ```
-
-

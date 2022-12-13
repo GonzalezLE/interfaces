@@ -1,14 +1,17 @@
 import re
 from datetime import datetime
-from typing import List
+from typing import List,Dict
+import json
+
 from classes.Vitros import Vitros
 from classes.Horiba import Horiba
 from classes.General_resuls import General_resuls
+from classes.Qc import Qc
 
 from settings.settings import WORDS_OF_CONTROL
 
 
-class Parse():
+class Parse(Qc):
 
     def __init__(self, cadena:str,posicion_nim:int,udn:str):
         """_summary_
@@ -17,7 +20,8 @@ class Parse():
             cadena (str): Cadena en crudo como viene del equipo
             posicion_nim (int): Posicion del nim
         """
-        # super().__init__(cadena=cadena,keywords=keywords_clean)
+        super().__init__()
+        
         self.cadena =  cadena
         self.__posicion_nim = posicion_nim
         self.__udn__ = udn
@@ -69,7 +73,10 @@ class Parse():
             
         now = datetime.now()
         _NIM = self.handle_get_nim()
-        json_response = {
+        
+        qc = self.is_control()        
+                
+        json_response : Dict = {
             'nim' : _NIM,
             'resultados' : data,
             'cadena' : self.cadena,
@@ -78,8 +85,11 @@ class Parse():
             'flag' : 0,
             'branch' : self.__udn__,
             'analyzer' : equipo,
-            'is_control':self.is_control()
-        }                
+            'is_control': qc
+        }
+        
+        if qc == 1:
+            self.handle_send_qc(json_response)
         
         return json_response               
     

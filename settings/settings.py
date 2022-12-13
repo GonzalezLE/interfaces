@@ -15,14 +15,14 @@ WORDS_OF_CONTROL : List = [
 
 REMOVE_WORDS = ["#^1","^1","#",'^']
 
+URL_API_QC : str = "api_analisadores/v1/calidad"
 """ QC
     Api donde se van a mandar los controles
 """
-URL_API_QC : str = ""
 
-"""
-    Configuracion para los insert en mongo
-"""
 URL_MONGO : str = "mongodb://localhost:27017"
 name_database : str = "interfaces"
 name_collection : str ="dna_labs"
+"""
+    Configuracion para los insert en mongo
+"""
